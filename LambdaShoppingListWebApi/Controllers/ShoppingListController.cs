@@ -20,9 +20,9 @@ namespace LambdaShoppingListWebApi.Controllers
         public ShoppingListController(IShoppingListService shoppingListService) {
             _shoppingListService = shoppingListService;
         }
-       
-        [HttpGet]
         
+        [HttpGet]
+       
         public IEnumerable<ShoppingListModel> GetShoppingList() {
             var result = _shoppingListService.GetItemsFromShoppingList();
             return result;

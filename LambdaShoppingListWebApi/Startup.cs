@@ -30,7 +30,19 @@ namespace LambdaShoppingListWebApi
         // This method gets called by the runtime. Use this method to add services to the container
         public void ConfigureServices(IServiceCollection services)
         {
+
             services.AddControllers();
+            services.AddCors(options =>
+            {
+                // this defines a CORS policy called "default"
+                options.AddPolicy("default", policy =>
+                {
+                    policy.AllowAnyOrigin()
+                        .AllowAnyHeader()
+                        .AllowAnyMethod();
+                        
+                });
+            });
             /*services.AddCors();
             services.AddMvc(options => options.EnableEndpointRouting = false);*/
             // Add S3 to the ASP.NET Core dependency injection framework.
@@ -44,22 +56,25 @@ namespace LambdaShoppingListWebApi
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
-             
-            //app.UseMvc();
-           app.UseHttpsRedirection();
 
+            app.UseCors("default");
+            app.UseHttpsRedirection();
+            
             app.UseRouting();
 
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
+                
                 endpoints.MapControllers();
             });
+            
         }
     }
 }
