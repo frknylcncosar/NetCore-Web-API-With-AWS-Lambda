@@ -28,7 +28,7 @@ namespace LambdaShoppingListWebApi.Controllers
             return result;
         }
         [HttpPost]
-        public IActionResult AddItemToShoppingList([FromBody] ShoppingListModel shoppingList) {
+        public IActionResult AddItemToShoppingList([FromBody] ShoppingList shoppingList) {
 
             _shoppingListService.AddItemsToShoppingList(shoppingList);
             return Ok();

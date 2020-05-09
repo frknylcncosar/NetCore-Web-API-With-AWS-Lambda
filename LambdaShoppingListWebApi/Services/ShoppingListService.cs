@@ -8,13 +8,13 @@ namespace LambdaShoppingListWebApi.Services {
     public class ShoppingListService : IShoppingListService {
         private readonly ContextDB _contextDB = new ContextDB();
  
-        public void AddItemsToShoppingList(ShoppingListModel shoppingList) {
+        public void AddItemsToShoppingList(ShoppingList shoppingList) {
             
             ShoppingListModel shoppingListModel = new ShoppingListModel {
-                ID = shoppingList.ID,
+                ID = (shoppingList.GetHashCode()),
                 ShoppingList = new ShoppingList {
-                    Name = shoppingList.ShoppingList.Name,
-                    Quantity = shoppingList.ShoppingList.Quantity
+                    Name = shoppingList.Name,
+                    Quantity = shoppingList.Quantity
                 }
             };
             _contextDB.Insert(shoppingListModel);

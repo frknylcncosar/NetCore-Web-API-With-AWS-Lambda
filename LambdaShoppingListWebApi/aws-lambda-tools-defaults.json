@@ -13,6 +13,6 @@
     "s3-prefix"     : "LambdaShoppingListWebApi/",
     "template"      : "serverless.template",
     "template-parameters" : "\"ShouldCreateBucket\"=\"true\";\"BucketName\"=\"\"",
-    "s3-bucket"           : "yenis3bucket",
-    "stack-name"          : "ShoppingListAPI"
+    "s3-bucket"           : "yepyenis3bucket",
+    "stack-name"          : "ShoppingListAPIv2"
 }
